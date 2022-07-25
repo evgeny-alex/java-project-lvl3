@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public class NumberSchema implements BaseSchema {
+public class MapSchema implements BaseSchema {
     @Override
     public void isValid() {
 
@@ -11,11 +11,7 @@ public class NumberSchema implements BaseSchema {
 
     }
 
-    public void positive() {
-
-    }
-
-    public void range() {
+    public void sizeof() {
 
     }
 }

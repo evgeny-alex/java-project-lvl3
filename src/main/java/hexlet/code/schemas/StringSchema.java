@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public class StringSchema implements Schema {
+public class StringSchema implements BaseSchema {
 
     @Override
     public void isValid() {
@@ -11,5 +11,8 @@ public class StringSchema implements Schema {
     }
 
     public void contains() {
+    }
+
+    public void minLength() {
     }
 }

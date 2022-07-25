@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public interface Schema {
+public interface BaseSchema {
 
     void isValid();
 
