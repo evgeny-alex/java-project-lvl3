@@ -1,21 +1,19 @@
 package hexlet.code.schemas;
 
-public class NumberSchema implements BaseSchema {
-    @Override
-    public void isValid() {
+public class NumberSchema extends BaseSchema {
 
+    public NumberSchema required() {
+        addCheck((v) -> v instanceof Integer);
+        return this;
     }
 
-    @Override
-    public void required() {
-
+    public NumberSchema positive() {
+        addCheck(value -> value == null || value instanceof Integer && (Integer) value > 0);
+        return this;
     }
 
-    public void positive() {
-
-    }
-
-    public void range() {
-
+    public NumberSchema range(int min, int max) {
+        addCheck(value -> value == null || value instanceof Integer && (Integer) value >= min && (Integer) value <= max);
+        return this;
     }
 }

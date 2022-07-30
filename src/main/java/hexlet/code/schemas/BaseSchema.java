@@ -1,8 +1,23 @@
 package hexlet.code.schemas;
 
-public interface BaseSchema {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-    void isValid();
+public abstract class BaseSchema {
 
-    void required();
+    private final List<Predicate<Object>> checks = new ArrayList<>();
+
+    protected final void addCheck(Predicate<Object> predicate) {
+        checks.add(predicate);
+    }
+
+    public final boolean isValid(Object value) {
+        for (Predicate<Object> check: checks) {
+            if (!check.test(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

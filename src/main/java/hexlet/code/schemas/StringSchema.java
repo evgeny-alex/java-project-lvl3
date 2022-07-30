@@ -1,18 +1,19 @@
 package hexlet.code.schemas;
 
-public class StringSchema implements BaseSchema {
+public class StringSchema extends BaseSchema {
 
-    @Override
-    public void isValid() {
+    public StringSchema required() {
+        addCheck((v) -> v instanceof String && !((String) v).isEmpty());
+        return this;
     }
 
-    @Override
-    public void required() {
+    public StringSchema contains(String subString) {
+        addCheck(value -> value == null || value instanceof String && ((String) value).contains(subString));
+        return this;
     }
 
-    public void contains() {
-    }
-
-    public void minLength() {
+    public StringSchema minLength(int length) {
+        addCheck(value -> value == null || value instanceof String && ((String) value).length() >= length);
+        return this;
     }
 }

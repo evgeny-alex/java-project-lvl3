@@ -1,17 +1,29 @@
 package hexlet.code.schemas;
 
-public class MapSchema implements BaseSchema {
-    @Override
-    public void isValid() {
+import java.util.Map;
 
+public class MapSchema extends BaseSchema {
+
+    public MapSchema required() {
+        addCheck((v) -> v instanceof Map);
+        return this;
     }
 
-    @Override
-    public void required() {
-
+    public MapSchema sizeof(int size) {
+        addCheck((v) -> ((Map) v).size() == size);
+        return this;
     }
 
-    public void sizeof() {
-
+    public MapSchema shape(Map<String, BaseSchema> schemaMap) {
+        addCheck(value -> {
+            for (Map.Entry<String, BaseSchema> entry : schemaMap.entrySet()) {
+                if (!((Map) value).containsKey(entry.getKey())) {
+                    continue;
+                }
+                return entry.getValue().isValid(((Map) value).get(entry.getKey()));
+            }
+            return true;
+        });
+        return this;
     }
 }
