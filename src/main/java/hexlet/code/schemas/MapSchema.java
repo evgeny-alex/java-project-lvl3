@@ -20,7 +20,9 @@ public final class MapSchema extends BaseSchema {
                 if (!((Map) value).containsKey(entry.getKey())) {
                     continue;
                 }
-                return entry.getValue().isValid(((Map) value).get(entry.getKey()));
+                if (!entry.getValue().isValid(((Map) value).get(entry.getKey()))) {
+                    return false;
+                }
             }
             return true;
         });
