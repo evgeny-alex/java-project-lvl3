@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build-run
 
 run-dist:
-	/Documents/Job/Hexlet/java/java-project-lvl2/build/install/app/bin/app -V
+	/Documents/Job/Hexlet/java/java-project-lvl3/build/install/app/bin/app -V
 
 clean:
 	./gradlew clean
